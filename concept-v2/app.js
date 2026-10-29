@@ -26,6 +26,6 @@
     if(!ok){f.querySelector('.bad').focus();return}
     var v=function(n){return f.elements[n].value.trim()};
     var body='Name: '+v('name')+'\nPhone: '+v('phone')+'\nEmail: '+v('email')+'\nProject type: '+v('type')+'\nLocation: '+v('loc')+'\n\nDetails:\n'+v('msg');
-    location.href='mailto:chase@edstromak.com?subject='+encodeURIComponent('Quote request: '+v('type'))+'&body='+encodeURIComponent(body);
+    location.href='mailto:office@edstromak.com?subject='+encodeURIComponent('Quote request: '+v('type'))+'&body='+encodeURIComponent(body);
   });
 })();
