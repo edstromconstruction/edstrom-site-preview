@@ -17,11 +17,14 @@
   document.querySelectorAll('.tile[data-p]').forEach(function(b){b.addEventListener('click',function(){open(b.dataset.p,b)})});
   pm.addEventListener('click',function(e){if(e.target===pm||e.target.classList.contains('pm-x'))close()});
   lb.addEventListener('click',function(){lb.classList.remove('open');lbi.removeAttribute('src')});
+  // in-page sliders and galleries
+  initBA(document.querySelector('main')||document);
+  document.querySelectorAll('main .gal img').forEach(function(i){i.addEventListener('click',function(){lbi.src=i.src;lbi.alt=i.alt;lb.classList.add('open')})});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(lb.classList.contains('open')){lb.classList.remove('open')}else if(pm.classList.contains('open'))close()}});
 
   // quote form -> mailto
   var f=document.getElementById('qform');
-  f.addEventListener('submit',function(e){e.preventDefault();var ok=true;
+  if(f)f.addEventListener('submit',function(e){e.preventDefault();var ok=true;
     ['name','email'].forEach(function(n){var el=f.elements[n];var bad=!el.value.trim()||(n==='email'&&!/^\S+@\S+\.\S+$/.test(el.value));el.classList.toggle('bad',bad);if(bad)ok=false});
     if(!ok){f.querySelector('.bad').focus();return}
     var v=function(n){return f.elements[n].value.trim()};
