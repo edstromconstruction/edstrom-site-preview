@@ -523,7 +523,7 @@
 <script>
 (function(){
 function initBA(root){root.querySelectorAll('.ba').forEach(function(b){var r=b.querySelector('input'),a=b.querySelector('.after'),bar=b.querySelector('.bar');function u(){a.style.clipPath='inset(0 0 0 '+r.value+'%)';bar.style.left=r.value+'%'}r.addEventListener('input',u);u()})}
-var modal=document.createElement('div');modal.className='pm';modal.innerHTML='<div class="box"><button class="x" aria-label="Close">&times;</button><div class="in"></div></div>';document.body.appendChild(modal);
+var modal=document.createElement('div');modal.className='pm';modal.innerHTML='<div class="box"><button class="x" aria-label="Close">&times;</button><div class="in proj" style="border:0"></div></div>';document.body.appendChild(modal);
 var inner=modal.querySelector('.in');
 function close(){modal.classList.remove('open');inner.innerHTML='';document.body.style.overflow=''}
 modal.addEventListener('click',function(e){if(e.target===modal||e.target.classList.contains('x'))close()});
