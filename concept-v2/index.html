@@ -307,7 +307,8 @@
           <a href="https://www.google.com/maps/search/?api=1&amp;query=2135%20Richardson%20Hwy%20Ste%201%2C%20North%20Pole%2C%20AK%2099705" target="_blank" rel="noopener"><small>Office</small>2135 Richardson Hwy Ste 1, North Pole, AK 99705</a>
         </div>
       </div>
-      <form class="qform" id="qform" novalidate>
+      <form class="qform" id="qform" action="mailto:office@edstromak.com?subject=Quote%20request" method="post" enctype="text/plain" novalidate>
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <div class="row2">
           <label>Name<input name="name" required autocomplete="name" /></label>
           <label>Phone<input name="phone" type="tel" autocomplete="tel" /></label>
@@ -323,7 +324,9 @@
         </div>
         <label>Project details<textarea name="msg" rows="4" placeholder="Scope, timeline, plans available?"></textarea></label>
         <button class="btn btn-red wide" type="submit">Send request</button>
-        <p class="fine">Opens your email app with your request addressed to office@edstromak.com. You can attach plans or photos there.</p>
+        <p class="fine consent">By submitting, you agree to our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms</a>.</p>
+        <p class="fine">Have plans or photos? Email them to <a href="mailto:office@edstromak.com">office@edstromak.com</a>.</p>
+        <div class="fmsg" id="fmsg" role="status" aria-live="polite" hidden></div>
       </form>
     </div>
   </section>
@@ -345,7 +348,7 @@
       <p>Alaska Contractor License CONG35843<br/>General Contractor, residential endorsement<br/>Business License #948948<br/>Bonding approved up to $4M · EMR 0.87<br/>UEI GQNLTAJ2ZCX6 · CAGE 7JVQ0</p>
     </div>
   </div>
-  <div class="wrap copy">© 2026 Edstrom Construction Company, LLC. All rights reserved.</div>
+  <div class="wrap copy">© 2026 Edstrom Construction Company, LLC. All rights reserved.<span class="copy-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a></span></div>
 </footer>
 
 <!-- sticky mobile action bar -->

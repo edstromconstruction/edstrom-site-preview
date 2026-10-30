@@ -22,13 +22,21 @@
   document.querySelectorAll('main .gal img').forEach(function(i){i.addEventListener('click',function(){lbi.src=i.src;lbi.alt=i.alt;lb.classList.add('open')})});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(lb.classList.contains('open')){lb.classList.remove('open')}else if(pm.classList.contains('open'))close()}});
 
-  // quote form -> mailto
-  var f=document.getElementById('qform');
+  // quote form -> FormSubmit AJAX (mailto action stays as no-JS fallback)
+  var f=document.getElementById('qform'),fm=document.getElementById('fmsg');
+  function say(cls,html){if(!fm)return;fm.className='fmsg '+cls;fm.innerHTML=html;fm.hidden=false}
   if(f)f.addEventListener('submit',function(e){e.preventDefault();var ok=true;
     ['name','email'].forEach(function(n){var el=f.elements[n];var bad=!el.value.trim()||(n==='email'&&!/^\S+@\S+\.\S+$/.test(el.value));el.classList.toggle('bad',bad);if(bad)ok=false});
     if(!ok){f.querySelector('.bad').focus();return}
+    if(f.elements['_honey']&&f.elements['_honey'].value){say('ok','Thanks - we got your request and will contact you soon.');f.reset();return}
     var v=function(n){return f.elements[n].value.trim()};
-    var body='Name: '+v('name')+'\nPhone: '+v('phone')+'\nEmail: '+v('email')+'\nProject type: '+v('type')+'\nLocation: '+v('loc')+'\n\nDetails:\n'+v('msg');
-    location.href='mailto:office@edstromak.com?subject='+encodeURIComponent('Quote request: '+v('type'))+'&body='+encodeURIComponent(body);
+    var btn=f.querySelector('button[type=submit]'),bl=btn.textContent;btn.disabled=true;btn.textContent='Sending...';if(fm)fm.hidden=true;
+    var data={name:v('name'),phone:v('phone'),email:v('email'),'project type':v('type'),location:v('loc'),details:v('msg'),
+      _subject:'New quote request - Edstrom website',_template:'table',_captcha:'false',_replyto:v('email'),_honey:''};
+    fetch('https://formsubmit.co/ajax/office@edstromak.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){return r.json().catch(function(){return {}}).then(function(j){if(!r.ok||String(j.success)!=='true')throw new Error(j.message||('HTTP '+r.status));return j})})
+      .then(function(){say('ok','Thanks - we got your request and will contact you soon.');f.reset()})
+      .catch(function(){say('err','Sorry, your request didn\'t go through. Please call our after-hours line at <a href="tel:+19074880452">(907) 488-0452</a> or email <a href="mailto:office@edstromak.com">office@edstromak.com</a>.')})
+      .then(function(){btn.disabled=false;btn.textContent=bl});
   });
 })();
