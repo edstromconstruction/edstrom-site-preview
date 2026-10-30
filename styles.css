@@ -315,3 +315,6 @@ h1,h2,h3{font-family:var(--h);letter-spacing:-.02em;line-height:1.05;margin:0}
 .fmsg.err{background:#fdecec;color:#7f1d1d;border:1px solid #f5b8b8}
 .fmsg a{text-decoration:underline;font-weight:600}
 .qform button[disabled]{opacity:.65;cursor:wait}
+
+/* SEO: keyword line inside the hero H1, styled like the eyebrow */
+.hero h1 .h1-kw{display:flex;font-size:.8rem;line-height:1.4;max-width:none;background:none;-webkit-background-clip:border-box;background-clip:border-box;color:#fff;-webkit-text-fill-color:#fff;margin:0 0 .9rem}
