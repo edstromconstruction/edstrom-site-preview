@@ -40,3 +40,24 @@
       .then(function(){btn.disabled=false;btn.textContent=bl});
   });
 })();
+
+// careers: open application on "Apply now" / hash, validate, then native POST (multipart for resume)
+(function(){
+  function openApply(id,scroll){var d=document.getElementById(id);if(!d||d.tagName!=='DETAILS')return;d.open=true;if(scroll)d.scrollIntoView({behavior:'smooth',block:'start'})}
+  document.querySelectorAll('[data-open]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();openApply(a.getAttribute('data-open'),true);history.replaceState(null,'','#'+a.getAttribute('data-open'))})});
+  if(location.hash.indexOf('#apply-')===0)openApply(location.hash.slice(1),true);
+  var today=new Date(),iso=today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+  document.querySelectorAll('.aform input.today').forEach(function(i){if(!i.value)i.value=iso});
+  document.querySelectorAll('.aform').forEach(function(f){
+    var fm=f.querySelector('.fmsg'),file=f.querySelector('input[type=file]');
+    function say(cls,t){fm.className='fmsg '+cls;fm.textContent=t;fm.hidden=false}
+    if(file)file.addEventListener('change',function(){var max=+file.dataset.max||5242880;file.setCustomValidity(file.files[0]&&file.files[0].size>max?'Resume must be 5 MB or smaller.':'')});
+    f.addEventListener('submit',function(e){
+      if(f.elements['_honey']&&f.elements['_honey'].value){e.preventDefault();location.href='careers-thanks.html';return}
+      if(!f.checkValidity()){e.preventDefault();f.reportValidity();say('err','Please fill in the highlighted required fields.');return}
+      var btn=f.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Sending application...';
+      say('ok','Sending your application. Please wait...');
+    });
+  });
+})();
+window.addEventListener('pageshow',function(){document.querySelectorAll('.aform button[type=submit]').forEach(function(b){b.disabled=false;b.textContent='Submit application'});document.querySelectorAll('.aform .fmsg').forEach(function(m){m.hidden=true})});
