@@ -414,3 +414,4 @@ h1,h2,h3{font-family:var(--h);letter-spacing:-.02em;line-height:1.05;margin:0}
 .job-bullets li{display:list-item;margin:0;padding:0;background:none;border:0}
 .job-bullets li::marker{color:#e31b23}
 .lead-list{margin-bottom:6px}
+.hire .job-bullets li::marker{color:#fff}
