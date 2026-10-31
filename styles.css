@@ -409,3 +409,8 @@ h1,h2,h3{font-family:var(--h);letter-spacing:-.02em;line-height:1.05;margin:0}
 @media (min-width:1061px) and (max-width:1360px){.nav-in{gap:1rem}.links{gap:1.05rem}.nav-cta .pill-ghost .lbl{display:none}.nav-cta .pill-ghost{padding:.55rem .65rem}}
 @media (min-width:1061px) and (max-width:1130px){.links{gap:.8rem;font-size:.9rem}}
 @media (min-width:1361px){.nav-in{gap:1.1rem}.links{gap:1.2rem}}
+
+.job-bullets{list-style:disc;margin:12px 0 0 1.3em;padding:0;color:inherit;font-size:1.1rem;font-weight:600;line-height:1.7}
+.job-bullets li{display:list-item;margin:0;padding:0;background:none;border:0}
+.job-bullets li::marker{color:#e31b23}
+.lead-list{margin-bottom:6px}
