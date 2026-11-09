@@ -36,7 +36,7 @@
     fetch('https://formsubmit.co/ajax/office@edstromak.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
       .then(function(r){return r.json().catch(function(){return {}}).then(function(j){if(!r.ok||String(j.success)!=='true')throw new Error(j.message||('HTTP '+r.status));return j})})
       .then(function(){say('ok','Thanks - we got your request and will contact you soon.');f.reset()})
-      .catch(function(){say('err','Sorry, your request didn\'t go through. Please call our after-hours line at <a href="tel:+19074880452">(907) 488-0452</a> or email <a href="mailto:office@edstromak.com">office@edstromak.com</a>.')})
+      .catch(function(){say('err','Sorry, your request didn\'t go through. Please call us 24/7 at <a href="tel:+19074880452">(907) 488-0452</a> or email <a href="mailto:office@edstromak.com">office@edstromak.com</a>.')})
       .then(function(){btn.disabled=false;btn.textContent=bl});
   });
 })();
