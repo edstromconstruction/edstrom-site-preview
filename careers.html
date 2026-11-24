@@ -30,7 +30,8 @@
 <meta name="theme-color" content="#0d0f12" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Archivo:wght@600;700;800;900&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Archivo:wght@600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Archivo:wght@600;700;800;900&display=swap" /></noscript>
 <link rel="stylesheet" href="styles.css" />
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -116,7 +117,7 @@
 <main id="main">
   <!-- HERO -->
   <section class="hero hero-sm" id="top">
-    <img class="hero-bg" src="img/home-framing.webp" alt="Edstrom Construction carpenters framing a home in North Pole, Alaska" fetchpriority="high" />
+    <img class="hero-bg" src="img/home-framing.webp" srcset="img/home-framing-sm.webp 640w, img/home-framing.webp 1280w" sizes="100vw" alt="Edstrom Construction carpenters framing a home in North Pole, Alaska" fetchpriority="high" />
     <div class="hero-shade"></div>
     <div class="wrap hero-in">
       <h1><span class="eyebrow h1-kw">Carpenter &amp; CDL Driver Jobs in North Pole &amp; Fairbanks, Alaska</span>We're hiring.<br/><span>Build Alaska with us.</span></h1>
